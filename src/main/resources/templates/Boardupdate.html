@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+</head>
+<body>
+게시글 수정 하기
+
+
+<form action="/BoardUpdate" method="get">
+    <input type="text" name="boardKey" th:value="${board.boardKey}" hidden>
+    제목 : <input type="text" name="boardTitle" th:value="${board.boardTitle}"><br/>
+    내용 : <input type="text" name="boardContent" th:value="${board.boardContent}"><br/>
+    작성자 : <input type="text" name="boardBy" th:value="${board.boardBy}">
+
+    <button type="submit">SUBMIT</button>
+</form>
+</body>
+</html>

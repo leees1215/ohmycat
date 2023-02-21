@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>게시판</title>
+</head>
+<body>
+게시글 한개 조회
+
+<div style="margin-top: 1rem;">키 : [[${board.boardKey}]]</div>
+<div>제목 : [[${board.boardTitle}]]</div>
+<div>내용 : [[${board.boardContent}]]</div>
+<div>작성자 : [[${board.boardBy}]]</div>
+
+<a th:href="@{/boardUpdate/{id}(id=${board.boardKey})}">수정페이지 이동</a>
+
+</body>
+
+
+</html>

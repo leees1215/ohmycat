@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+</head>
+<body>
+게시판 전체조회
+
+<table>
+
+    <tr>
+        <th>키</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>작성자</th>
+        <th>생성날짜</th>
+
+    </tr>
+    <tr th:each="li : ${list3}">
+
+        <td>[[${li.boardKey}]]</td>
+        <td> <a th:href="@{boardSelect/{id}(id=${li.boardKey})}">[[${li.boardTitle}]]</a> </td>
+        <td>[[${li.boardContent}]]</td>
+        <td>[[${li.boardBy}]]</td>
+        <td>[[${li.createTime}]]</td>
+
+
+    </tr>
+
+</table>
+
+</body>
+</html>
+

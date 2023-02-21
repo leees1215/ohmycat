@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb:://127.0.0.1:3306/ohmycat
+    username: root
+    password: asdf
+  thymeleaf:
+    prefix: classpath:/templates/
+
+
+server:
+  port: 8082
