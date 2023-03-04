@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "member")
 @Setter
 @Getter
-public class Member extends BasicEntity{
+public class Member extends BasicEntity {
 
     @Id
     @Column(name = "mem_key", nullable = false)

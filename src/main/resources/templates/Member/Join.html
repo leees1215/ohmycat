@@ -9,7 +9,7 @@ member 회원가입
 
 <br>
 아이디 : <input name="memId" id="memId"><br/>
-패스워드 : <input name="memPW" id="memPW"><br/>
+패스워드 : <input name="memPw" id="memPw"><br/>
 이메일 : <input name="memEmail" id="memEmail"><br/>
 모바일 : <input name="memMobile" id="memMobile"><br/>
 
@@ -25,7 +25,7 @@ member 회원가입
     function registerMember() {
 
         const data = {"memId" : document.getElementById("memId").value,
-                      "memPW" : document.getElementById("memPW").value,
+                      "memPw" : document.getElementById("memPw").value,
                       "memEmail" : document.getElementById("memEmail").value,
                       "memMobile" : document.getElementById("memMobile").value,
                       }
@@ -34,7 +34,8 @@ member 회원가입
             type: 'POST'
             , url : '/member'
             , dataType: 'json'
-            , data : data
+            , contentType: 'application/json'
+            , data : JSON.stringify(data)
             , complete: function(result) {
                 alert("잘 등록되었습니다");
             }

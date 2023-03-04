@@ -24,12 +24,15 @@ public class MemberPageController {
     }
 
     @RequestMapping("/joinPage")
-    public String insertMember2(Member member) {
-        memberService.insertMember(member);
+    public String insertMember2() {
         return "Member/Join.html";
     }
 
-
+    @RequestMapping("/memberUpdate")
+    public String updateMember(Member member){
+        memberService.updateMember(member);
+        return "redirect:/Member/Login.html";
+    }
 
 
     // JWT Spring - Security
