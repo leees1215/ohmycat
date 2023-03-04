@@ -35,8 +35,8 @@ public class BoardService {
     }
 
     public void updateBoard(UpdateBoardDto dto) { // UpdateBOardDto 수정 것
-        Board board = new Board();
-        board.updateBoard(dto.getBoardKey(), dto.getBoardTitle(), dto.getBoardContent(), 1); // 변수
+        Board board = boardRepository.findById(dto.getBoardKey()).orElseThrow(() -> new RuntimeException());
+        board.updateBoard(dto.getBoardKey(), dto.getBoardTitle(), dto.getBoardContent()); // 변수
         boardRepository.save(board);
     }
 

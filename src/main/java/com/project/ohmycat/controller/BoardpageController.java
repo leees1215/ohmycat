@@ -1,6 +1,5 @@
 package com.project.ohmycat.controller;
 
-import com.project.ohmycat.dto.BoardDto;
 import com.project.ohmycat.dto.UpdateBoardDto;
 import com.project.ohmycat.entity.Board;
 import com.project.ohmycat.service.BoardService;
@@ -35,11 +34,24 @@ public class BoardpageController {
     }
 
     @RequestMapping("/boardUpdate/{id}")
-    public String selectboard2(Model model, @PathVariable("id") Integer key){
+    public String updateboard(Model model, @PathVariable("id") Integer key) {
         Board board = boardService.selectBoardById(key);
-        model.addAttribute("board",boardService.selectBoardById(key));
+        model.addAttribute("board", boardService.selectBoardById(key));
         return "Boardupdate.html";
     }
+
+
+    @RequestMapping("/boardUpdate")
+    public String updateboard(UpdateBoardDto updateBoardDto){
+        boardService.updateBoard(updateBoardDto);
+        return "redirect:/boardSelect/" + updateBoardDto.getBoardKey();
+    }
+
+
+//    @RequestMapping("/boardRegister/{id]")
+//    public String registerboard(){
+//
+//    }
 
 
 

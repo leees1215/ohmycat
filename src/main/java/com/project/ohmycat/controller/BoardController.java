@@ -33,9 +33,7 @@ public class BoardController {
     }
 
     @PostMapping
-    public void updateBoard(){
-
-    }
+    public Board updateBoard(@PathVariable ("id") Integer id){ return boardService.selectBoardById(id);}
 
     @DeleteMapping
     public void deleteBoard(){

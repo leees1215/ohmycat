@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+member 회원가입
+
+<br>
+아이디 : <input name="memId" id="memId"><br/>
+패스워드 : <input name="memPW" id="memPW"><br/>
+이메일 : <input name="memEmail" id="memEmail"><br/>
+모바일 : <input name="memMobile" id="memMobile"><br/>
+
+<button onclick="registerMember()">회원가입하기</button>
+
+</body>
+</html>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    function registerMember() {
+
+        const data = {"memId" : document.getElementById("memId").value,
+                      "memPW" : document.getElementById("memPW").value,
+                      "memEmail" : document.getElementById("memEmail").value,
+                      "memMobile" : document.getElementById("memMobile").value,
+                      }
+
+        $.ajax({
+            type: 'POST'
+            , url : '/member'
+            , dataType: 'json'
+            , data : data
+            , complete: function(result) {
+                alert("잘 등록되었습니다");
+            }
+
+        })
+    }
+</script>

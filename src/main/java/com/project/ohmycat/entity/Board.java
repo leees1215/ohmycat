@@ -35,10 +35,9 @@ public class Board extends BasicEntity {
         this.boardBy = boardBy;
     }
 
-    public void updateBoard(Integer boardKey, String boardTitle, String boardContent, Integer boardBy) {
+    public void updateBoard(Integer boardKey, String boardTitle, String boardContent) {
         this.boardKey = boardKey;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
-        this.boardBy = boardBy;
     }
 }
