@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+메인화면
+
+<li><a href="/mainPage">MAIN</a></li>
+<button onclick="location.href='/boardPage'">게시판</button>
+
+<a th:if="${session.memKey == null}" href="/loginPage">Login</a>
+<a th:if="${session.memKey == null}" href="/joinPage">JOIN</a>
+<a th:if="${session.memKey != null}" href="/logoutPage">Logout</a>
+</body>
+</html>

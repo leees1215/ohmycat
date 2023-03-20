@@ -3,6 +3,7 @@ package com.project.ohmycat.entity;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "member")
 @Setter
 @Getter
+@ToString
 public class Member extends BasicEntity {
 
     @Id

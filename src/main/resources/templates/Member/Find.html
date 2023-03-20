@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>회원 조회</title>
+</head>
+<body>
+회원 조회
+<table id = "table">
+    <tr>
+      <th>키</th>
+      <th>아이디</th>
+      <th>비밀번호</th>
+      <th>이메일</th>
+      <th>모바일</th>
+    </tr>
+
+    <tr th:each="li:${list}">
+        <td><a th:href="@{/memberUpdate/{key}(key=${li.memKey})}">[[${li.memKey}]]</a></td>
+        <td>[[${li.memId}]]</td>
+        <td>[[${li.memPw}]]</td>
+        <td>[[${li.memEmail}]]</td>
+        <td>[[${li.memMobile}]]</td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>

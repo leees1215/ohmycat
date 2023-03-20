@@ -38,6 +38,7 @@ member 회원가입
             , data : JSON.stringify(data)
             , complete: function(result) {
                 alert("잘 등록되었습니다");
+                location.href='/loginPage';
             }
 
         })

@@ -1,5 +1,6 @@
 package com.project.ohmycat.service;
 
+import com.project.ohmycat.dto.MemberDto;
 import com.project.ohmycat.entity.Member;
 import com.project.ohmycat.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,24 @@ public class MemberService {
     public void deleteMember(Integer memberKey) {
 
         memberRepository.deleteById(memberKey);
+    }
+
+    public Member login(MemberDto memberDto){
+
+        try {
+            // 로직
+            Member member1 = memberRepository.findMemberByMemId(memberDto.getMemId()).orElseThrow(() -> new RuntimeException());
+            System.out.println(member1.toString());
+            if (member1.getMemPw().equals(memberDto.getMemPw())) {
+                return member1;
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
 

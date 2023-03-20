@@ -27,6 +27,8 @@ public class MemberController {
     @PostMapping
     public void insertMember(@RequestBody Member member) {
         memberService.insertMember(member);
+
+
     }
 
     @PutMapping

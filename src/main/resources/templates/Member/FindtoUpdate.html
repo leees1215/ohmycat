@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>조회 수정</title>
+</head>
+<body>
+조회 수정
+
+<form action="/memberUpdate/{id}" method="get">
+    <input type="text" name="memKey" th:value="${member.memKey}" hidden>
+    아이디 : <input type="text" name="memId" th:value="${member.memId}"><br/>
+    비밀번호 : <input type="text" name="memPw" th:value="${member.memPw}"><br/>
+    이메일 : <input type="text" name="memEmail" th:value="${member.memEmail}"><br/>
+    모바일 : <input type="text" name="memMobile" th:value="${member.memMobile}">
+
+    <button onclick="updateMember()">수정 등록</button>
+</form>
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    function updateMember() {
+
+        const data = {"memKey" : document.getElementById("memKey").value,
+                      "memId" : document.getElementById("memId").value,
+                      "memPw" : document.getElementById("memPw").value,
+                      "memEmail" : document.getElementById("memEmail").value,
+                      "memMobile" : document.getElementById("memMobile").value,
+                      }
+
+        $.ajax({
+            type: 'PUT'
+            , url : '/member'
+            , dataType: 'json'
+            , data : data
+            , complete: function(result) {
+                alert("잘 수정되었습니다");
+            }
+
+        })
+    }
+</script>
