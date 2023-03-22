@@ -17,7 +17,7 @@ public class LoginController {
 
     private final MemberService memberService;
 
-    @RequestMapping("/Main")
+    @RequestMapping("/login") //
     public String loginMember(MemberDto memberDto, HttpSession session){
         Member member = memberService.login(memberDto);
         if(member != null){
@@ -27,7 +27,11 @@ public class LoginController {
         }
         return "Member/Login.html";
     }
+    @RequestMapping("/logout")
+    public String logoutMember(HttpSession session){
+        session.invalidate();
+        return "redirect:/mainPage";
 
-
+    }
 
 }
