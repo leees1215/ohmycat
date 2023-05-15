@@ -1,6 +1,7 @@
 package com.project.ohmycat.controller;
 
 import com.project.ohmycat.dto.InsertBoardDto;
+import com.project.ohmycat.dto.InsertComDto;
 import com.project.ohmycat.dto.UpdateBoardDto;
 import com.project.ohmycat.entity.Board;
 import com.project.ohmycat.entity.Comment;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -85,7 +87,7 @@ public class BoardpageController {
 
     }
 
-    @RequestMapping("/boardRegister2")
+    @RequestMapping("/boardRegister2") // 게시글 작성 페이지에서 로그인유무 확인 후 게시글 작성
     public String registerBoard2(InsertBoardDto dto, HttpSession session){
         Integer memKey = (Integer) session.getAttribute("memKey");
         if (memKey == null) {
@@ -96,11 +98,15 @@ public class BoardpageController {
 
     }
 
-//    @RequestMapping("/boardDelete")
-//    public String deleteBoard(UpdateBoardDto updateBoardDto){
-//        boardService.deleteBoard(updateBoardDto);
-//        return "redirect:/boardPage";
-//    }
+    @RequestMapping("/boardDelete")
+    public String deleteBoard(InsertBoardDto dto){
+        System.out.println(dto);
+        System.out.println(dto.getBoardKey());
+//        boardService.deleteBoard(dto);
+        return "redirect:/boardPage";
+    }
+
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.project.ohmycat.service;
 
 import com.project.ohmycat.dto.InsertBoardDto;
+import com.project.ohmycat.dto.InsertComDto;
 import com.project.ohmycat.dto.UpdateBoardDto;
 import com.project.ohmycat.entity.Board;
 import com.project.ohmycat.repository.BoardRepository;
@@ -33,14 +34,14 @@ public class BoardService {
         boardRepository.save(board);
     }
 
-    public void updateBoard(UpdateBoardDto dto) { // UpdateBOardDto 수정 것
+    public void updateBoard(UpdateBoardDto dto) { // UpdateBoardDto 수정
         Board board = boardRepository.findById(dto.getBoardKey()).orElseThrow(() -> new RuntimeException());
         board.updateBoard(dto.getBoardKey(), dto.getBoardTitle(), dto.getBoardContent()); // 변수
         boardRepository.save(board);
     }
 
-    public void deleteBoard(Integer boardKey) {
-        boardRepository.deleteById(boardKey);
+    public void deleteBoard(InsertBoardDto dto) {
+        boardRepository.deleteById(dto.getBoardKey());
     }
 
 

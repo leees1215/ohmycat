@@ -30,10 +30,11 @@ public class Board extends BasicEntity {
     private Integer boardBy;
 
     @Builder
-    public Board(InsertBoardDto dto, Integer boardBy) {
+    public Board(InsertBoardDto dto, Integer boardBy, Integer boardKey) {
         this.boardTitle = dto.getBoardTitle();
         this.boardContent = dto.getBoardContent();
         this.boardBy = boardBy;
+        this.boardKey=dto.getBoardKey();
     }
 
     public void updateBoard(Integer boardKey, String boardTitle, String boardContent) {
