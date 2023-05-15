@@ -6,7 +6,9 @@ spring:
     password: asdf
   thymeleaf:
     prefix: classpath:/templates/
-
+  jpa:
+    hibernate:
+      ddl-auto: none
 
 server:
   port: 8082

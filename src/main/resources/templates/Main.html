@@ -8,10 +8,11 @@
 메인화면
 
 <li><a href="/mainPage">MAIN</a></li>
-<button onclick="location.href='/boardPage'">게시판</button>
+<li><a href="/boardPage">게시판</a></li>
+<li><a href="/memberFind">멤버전체조회</a></li>
 
 <a th:if="${session.memKey == null}" href="/loginPage">Login</a>
-<a th:if="${session.memKey == null}" href="/joinPage">JOIN</a>
-<a th:if="${session.memKey != null}" href="/logoutPage">Logout</a>
+<a th:if="${session.memKey == null}" href="/joinPage">Join</a>
+<a th:if="${session.memKey != null}" href="/logout">Logout</a>
 </body>
 </html>

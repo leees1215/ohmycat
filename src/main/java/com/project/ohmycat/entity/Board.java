@@ -1,5 +1,6 @@
 package com.project.ohmycat.entity;
 
+import com.project.ohmycat.dto.InsertBoardDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,9 +30,9 @@ public class Board extends BasicEntity {
     private Integer boardBy;
 
     @Builder
-    public Board(String boardTitle, String boardContent, Integer boardBy) {
-        this.boardTitle = boardTitle;
-        this.boardContent = boardContent;
+    public Board(InsertBoardDto dto, Integer boardBy) {
+        this.boardTitle = dto.getBoardTitle();
+        this.boardContent = dto.getBoardContent();
         this.boardBy = boardBy;
     }
 

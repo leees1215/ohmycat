@@ -6,6 +6,7 @@ import com.project.ohmycat.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -28,8 +29,9 @@ public class BoardController {
     }
 
     @PutMapping
-    public void insertBoard(@RequestBody InsertBoardDto dto){
-        boardService.insertBoard(dto);
+    public void insertBoard(@RequestBody InsertBoardDto dto, HttpSession session){
+        Integer memKey = (Integer) session.getAttribute("memKey");
+        boardService.insertBoard(dto, memKey);
     }
 
     @PostMapping

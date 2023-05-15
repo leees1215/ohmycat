@@ -31,4 +31,7 @@ public class Member extends BasicEntity {
     @Column(name = "mem_mobile", nullable = false)
     private String memMobile;
 
+    @Column(name = "admin_flag", nullable = false)
+    private String adminFlag;
+
 }

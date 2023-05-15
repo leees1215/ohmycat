@@ -3,8 +3,10 @@ package com.project.ohmycat.controller;
 import com.project.ohmycat.dto.InsertBoardDto;
 import com.project.ohmycat.dto.UpdateBoardDto;
 import com.project.ohmycat.entity.Board;
+import com.project.ohmycat.entity.Comment;
 import com.project.ohmycat.entity.Member;
 import com.project.ohmycat.service.BoardService;
+import com.project.ohmycat.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import java.util.List;
 public class BoardpageController {
 
     private final BoardService boardService;
+    private final CommentService commentService;
 
 
     @RequestMapping("/boardPage")
@@ -33,13 +36,30 @@ public class BoardpageController {
     @RequestMapping("/boardSelect/{id}")
     public String selectBoard(Model model, @PathVariable("id") Integer key, HttpSession session) {
         Board board = boardService.selectBoardById(key);
+        List<Comment> commentList = commentService.findAllComment(key);
+
         model.addAttribute("board", boardService.selectBoardById(key));
+        model.addAttribute("comment", commentList);
+
+
 
         Object memKey = session.getAttribute("memKey");
+        Integer adminFlag = (Integer) session.getAttribute("adminFlag");
 
         if (memKey == null) {
             return "Member/Login.html";
         }
+        if(adminFlag != null){ // 관리자가 아니면? 사용자화면
+            if (adminFlag != 1) {
+                System.out.println("관리자가 아닙니다");
+            } else {
+                System.out.println("관리자");
+            }
+            return "Member/Login.html";
+        } else {
+            System.out.println("");
+        }
+
 
         return "Boardfind.html";
     }
@@ -66,11 +86,21 @@ public class BoardpageController {
     }
 
     @RequestMapping("/boardRegister2")
-    public String registerBoard2(InsertBoardDto dto){
-        boardService.insertBoard(dto);
+    public String registerBoard2(InsertBoardDto dto, HttpSession session){
+        Integer memKey = (Integer) session.getAttribute("memKey");
+        if (memKey == null) {
+            return "Member/Login.html";
+        }
+        boardService.insertBoard(dto, memKey);
         return "redirect:/boardPage";
 
     }
+
+//    @RequestMapping("/boardDelete")
+//    public String deleteBoard(UpdateBoardDto updateBoardDto){
+//        boardService.deleteBoard(updateBoardDto);
+//        return "redirect:/boardPage";
+//    }
 
 
 }

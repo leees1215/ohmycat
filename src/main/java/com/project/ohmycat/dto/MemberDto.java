@@ -13,5 +13,6 @@ public class MemberDto {
     private String memPw;
     private String memEmail;
     private String memMobile;
+    private String adminFlag;
 
 }

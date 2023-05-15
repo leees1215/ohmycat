@@ -24,12 +24,11 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
-    public void insertBoard(InsertBoardDto dto) {
+    public void insertBoard(InsertBoardDto dto, Integer memKey) {
 
         Board board = Board.builder()
-                .boardTitle(dto.getBoardTitle())
-                .boardContent(dto.getBoardContent())
-                .boardBy(1)
+                .dto(dto)
+                .boardBy(memKey)
                 .build();
         boardRepository.save(board);
     }

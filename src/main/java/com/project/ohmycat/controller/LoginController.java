@@ -22,6 +22,7 @@ public class LoginController {
         Member member = memberService.login(memberDto);
         if(member != null){
             session.setAttribute("memKey", member.getMemKey());
+            session.setAttribute("admin", member.getAdminFlag());
             System.out.println(session.getAttribute("memKey"));
             return "redirect:/mainPage";
         }
@@ -33,5 +34,9 @@ public class LoginController {
         return "redirect:/mainPage";
 
     }
+
+//    public String Manager(){
+//
+//    }
 
 }
