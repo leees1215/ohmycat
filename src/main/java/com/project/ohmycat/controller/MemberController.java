@@ -33,6 +33,7 @@ public class MemberController {
 
     @PutMapping
     public void updateMember(@RequestBody Member member) {
+        System.out.println(member);
         memberService.updateMember(member);
     }
 

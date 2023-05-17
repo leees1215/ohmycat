@@ -29,11 +29,11 @@ public class MemberPageController {
         return "Member/Join.html";
     }
 
-//    @RequestMapping("/memberInsert") //회원가입->로그인페이지
-//    public String insertMember(Member member){
-//        memberService.insertMember(member);
-//        return "redirect:/Member/Login.html";
-//    }
+    @RequestMapping("/memberInsert") //회원가입->로그인페이지
+    public String insertMember(Member member){
+        memberService.insertMember(member);
+        return "redirect:/Member/Login.html";
+    }
 
     @RequestMapping("/memberFind") // 멤버 전체조회
     public String findMember(Model model){
@@ -41,7 +41,7 @@ public class MemberPageController {
         return "Member/Find.html";
     }
 
-    @RequestMapping("/memberUpdate/{id}") // 멤버 수정
+    @RequestMapping("/memberUpdate/{id}") // 멤버 수정하는 페이지
     public String updateMember(Model model, @PathVariable("id") Integer key){
         Member member = new Member();
         member.setMemKey(key);

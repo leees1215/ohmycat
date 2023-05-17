@@ -34,8 +34,8 @@ public class ComController {
 
     @PostMapping("/commentDelete")
     public String deleteComment(InsertComDto dto){
-        System.out.println(dto);
-        System.out.println(dto.getComKey());
+//        System.out.println(dto);
+//        System.out.println(dto.getComKey());
         commentService.deleteComment(dto);
         return "redirect:/boardSelect/"+dto.getBoardKey();
     }

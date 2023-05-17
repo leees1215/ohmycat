@@ -31,12 +31,15 @@ public class MemberService {
 
     public void updateMember(Member member) {
 
-//        Member member1  = memberRepository.findById(member.getMemKey()).orElseThrow(() -> new RuntimeException());
-//        member1.setMemId(member.getMemId());
-//        member1.setMemPw(member.getMemPw());
-//        member1.setMemMobile(member.getMemMobile());
-//        member1.setMemEmail(member.getMemEmail());
-        memberRepository.save(member);
+        Member member1  = memberRepository.findById(member.getMemKey()).orElseThrow(() -> new RuntimeException());
+
+        member1.setMemId(member.getMemId());
+        member1.setMemPw(member.getMemPw());
+        member1.setMemMobile(member.getMemMobile());
+        member1.setMemEmail(member.getMemEmail());
+
+        System.out.println(member1);
+        memberRepository.save(member1);
     }
 
     public void deleteMember(Integer memberKey) {
@@ -49,7 +52,7 @@ public class MemberService {
         try {
             // 로직
             Member member1 = memberRepository.findMemberByMemId(memberDto.getMemId()).orElseThrow(() -> new RuntimeException());
-            System.out.println(member1.toString());
+//            System.out.println(member1.toString());
             if (member1.getMemPw().equals(memberDto.getMemPw())) {
                 return member1;
             } else {

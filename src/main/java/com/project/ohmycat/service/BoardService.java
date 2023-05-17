@@ -40,8 +40,8 @@ public class BoardService {
         boardRepository.save(board);
     }
 
-    public void deleteBoard(InsertBoardDto dto) {
-        boardRepository.deleteById(dto.getBoardKey());
+    public void deleteBoard(Integer boardKey) {
+       boardRepository.deleteById(boardKey);
     }
 
 

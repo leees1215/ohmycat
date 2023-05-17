@@ -34,7 +34,7 @@
 
 <a th:href="@{/boardUpdate/{id}(id=${board.boardKey})}">수정페이지 이동</a>
 <br>
-<a th:href="@{/boardDelete}">해당 게시물 삭제</a>
+<a th:href="@{/boardDelete/{id}(id=${board.boardKey})}">해당 게시물 삭제</a>
 <br>
 <a th:href="@{/boardPage}">게시판 전체조회</a>
 <br>

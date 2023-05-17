@@ -98,15 +98,11 @@ public class BoardpageController {
 
     }
 
-    @RequestMapping("/boardDelete")
-    public String deleteBoard(InsertBoardDto dto){
-        System.out.println(dto);
-        System.out.println(dto.getBoardKey());
-//        boardService.deleteBoard(dto);
+    @RequestMapping("/boardDelete/{id}")
+    public String deleteBoard(@PathVariable("id") Integer boardKey){
+//        System.out.println(boardKey);
+        boardService.deleteBoard(boardKey);
         return "redirect:/boardPage";
     }
-
-
-
 
 }
