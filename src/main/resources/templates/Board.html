@@ -38,6 +38,9 @@
         <th>내용</th>
         <th>작성자</th>
         <th>생성날짜</th>
+        <th>조회수</th>
+
+
 
     </tr>
     <tr th:each="li : ${list3}">
@@ -47,6 +50,7 @@
         <td>[[${li.boardContent}]]</td>
         <td>[[${li.boardBy}]]</td>
         <td>[[${li.createTime}]]</td>
+        <td>[[${li.boardView}]]</td>
     </tr>
 
 
