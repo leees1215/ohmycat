@@ -32,13 +32,13 @@ public class MemberPageController {
     @RequestMapping("/memberInsert") //회원가입->로그인페이지
     public String insertMember(Member member){
         memberService.insertMember(member);
-        return "redirect:/Member/Login.html";
+        return "redirect:/loginPage";
     }
 
     @RequestMapping("/memberFind") // 멤버 전체조회
     public String findMember(Model model){
         model.addAttribute("list",memberService.findAllMember());
-        return "Member/Find.html";
+        return "member/Find.html";
     }
 
     @RequestMapping("/memberUpdate/{id}") // 멤버 수정하는 페이지
@@ -46,7 +46,7 @@ public class MemberPageController {
         Member member = new Member();
         member.setMemKey(key);
         model.addAttribute("member", memberService.selectMemberById(key));
-        return "Member/FindtoUpdate.html";
+        return "member/FindtoUpdate.html";
     }
 
 

@@ -37,6 +37,7 @@ public class MemberService {
         member1.setMemPw(member.getMemPw());
         member1.setMemMobile(member.getMemMobile());
         member1.setMemEmail(member.getMemEmail());
+        member1.setAdminFlag(member.getAdminFlag());
 
         System.out.println(member1);
         memberRepository.save(member1);

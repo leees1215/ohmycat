@@ -32,6 +32,6 @@ public class Member extends BasicEntity {
     private String memMobile;
 
     @Column(name = "admin_flag", nullable = false)
-    private String adminFlag;
+    private Integer adminFlag=0;
 
 }

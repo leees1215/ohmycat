@@ -29,12 +29,15 @@ public class Board extends BasicEntity {
     @Column(name = "board_by", nullable = false)
     private Integer boardBy;
 
+    @Column(name = "board_view", nullable = false)
+    private Integer boardView = 0;
+
     @Builder
     public Board(InsertBoardDto dto, Integer boardBy, Integer boardKey) {
         this.boardTitle = dto.getBoardTitle();
         this.boardContent = dto.getBoardContent();
         this.boardBy = boardBy;
-        this.boardKey=dto.getBoardKey();
+        this.boardKey = dto.getBoardKey();
     }
 
     public void updateBoard(Integer boardKey, String boardTitle, String boardContent) {

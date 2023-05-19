@@ -13,7 +13,7 @@
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/mainPage" class="nav-link active" aria-current="page">OhmyCat</a></li>
-            <li class="nav-item"><a href="boardPage" class="nav-link">게시판</a></li>
+            <li class="nav-item"><a href="/boardPage" class="nav-link">게시판</a></li>
             <li class="nav-item"><a href="/memberFind" class="nav-link">멤버전체조회</a></li>
             <li class="nav-item"><a th:if="${session.memKey == null}" href="/loginPage" class="nav-link">Login</a></li>
             <li class="nav-item"><a th:if="${session.memKey == null}" href="/joinPage" class="nav-link">Join</a></li>

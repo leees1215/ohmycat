@@ -12,7 +12,7 @@
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/mainPage" class="nav-link active" aria-current="page">OhmyCat</a></li>
-            <li class="nav-item"><a href="boardPage" class="nav-link">게시판</a></li>
+            <li class="nav-item"><a href="/boardPage" class="nav-link">게시판</a></li>
             <li class="nav-item"><a href="/memberFind" class="nav-link">멤버전체조회</a></li>
             <li class="nav-item"><a th:if="${session.memKey == null}" href="/loginPage" class="nav-link">Login</a></li>
             <li class="nav-item"><a th:if="${session.memKey == null}" href="/joinPage" class="nav-link">Join</a></li>
@@ -27,11 +27,22 @@
     제목 : <input type="text" name="boardTitle"><br/>
     내용 : <input type="text" name="boardContent"><br/>
     작성자 : <input type="text" name="boardBy" hidden><br/>
-
-
     <button type="submit">등록하기</button>
 
 </form>
+<!--<form role="form">-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleInputEmail1">Email address</label>-->
+<!--        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleInputPassword1">Password</label>-->
+<!--        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+<!--    </div>-->
+<!--</form>-->
+
+
+
 
 </body>
 </html>

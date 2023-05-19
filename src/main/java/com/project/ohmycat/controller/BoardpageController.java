@@ -1,21 +1,17 @@
 package com.project.ohmycat.controller;
 
 import com.project.ohmycat.dto.InsertBoardDto;
-import com.project.ohmycat.dto.InsertComDto;
 import com.project.ohmycat.dto.UpdateBoardDto;
 import com.project.ohmycat.entity.Board;
 import com.project.ohmycat.entity.Comment;
-import com.project.ohmycat.entity.Member;
 import com.project.ohmycat.service.BoardService;
 import com.project.ohmycat.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -36,13 +32,15 @@ public class BoardpageController {
     }
 
     @RequestMapping("/boardSelect/{id}")
-    public String selectBoard(Model model, @PathVariable("id") Integer key, HttpSession session) {
+    public String selectBoard(Model model, @PathVariable("id") Integer key,
+                                            @PathVariable("id") Integer view, HttpSession session) {
         Board board = boardService.selectBoardById(key);
         List<Comment> commentList = commentService.findAllComment(key);
 
         model.addAttribute("board", boardService.selectBoardById(key));
         model.addAttribute("comment", commentList);
 
+        Board board1 = boardService.viewBoard(view);
 
 
         Object memKey = session.getAttribute("memKey");
@@ -61,8 +59,6 @@ public class BoardpageController {
         } else {
             System.out.println("");
         }
-
-
         return "Boardfind.html";
     }
 
@@ -70,6 +66,7 @@ public class BoardpageController {
     public String updateBoard(Model model, @PathVariable("id") Integer key) {
         Board board = boardService.selectBoardById(key);
         model.addAttribute("board", boardService.selectBoardById(key));
+
         return "Boardupdate.html";
     }
 
@@ -99,7 +96,7 @@ public class BoardpageController {
     }
 
     @RequestMapping("/boardDelete/{id}")
-    public String deleteBoard(@PathVariable("id") Integer boardKey){
+    public String deleteBoard(@PathVariable("id") Integer boardKey) {
 //        System.out.println(boardKey);
         boardService.deleteBoard(boardKey);
         return "redirect:/boardPage";
