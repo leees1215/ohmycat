@@ -21,13 +21,14 @@
         </ul>
     </header>
 </div>
-
 <div class="container text-center">
 <br>
-아이디 : <input name="memId" id="memId"><br/>
-패스워드 : <input name="memPw" id="memPw"><br/>
-이메일 : <input name="memEmail" id="memEmail"><br/>
-모바일 : <input name="memMobile" id="memMobile"><br/>
+아이디 : <input name="memId" id="memId" required><br/>
+패스워드 : <input name="memPw" id="memPw" required><br/>
+닉네임 : <input name="memNickname" id="memNickname" required><br/>
+이메일 : <input name="memEmail" id="memEmail" required><br/>
+모바일 : <input name="memMobile" id="memMobile" required><br/>
+
 
 <button onclick="registerMember()">회원가입하기</button>
 </div>
@@ -39,6 +40,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     function registerMember() {
+
 
         const data = {"memId" : document.getElementById("memId").value,
                       "memPw" : document.getElementById("memPw").value,
@@ -53,6 +55,7 @@
             , contentType: 'application/json'
             , data : JSON.stringify(data)
             , complete: function(result) {
+
                 alert("잘 등록되었습니다");
                 location.href='/loginPage';
             }

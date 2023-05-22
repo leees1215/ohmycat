@@ -29,6 +29,7 @@
 <input type="text" name="memKey" id="memKey" th:value="${member.memKey}" hidden>
 아이디 : <input type="text" name="memId" id="memId" th:value="${member.memId}"><br/>
 비밀번호 : <input type="text" name="memPw" id="memPw" th:value="${member.memPw}"><br/>
+닉네임 : <input type="text" name="memNickname" id="memNickname" th:value="${member.memNickname}"><br/>
 이메일 : <input type="text" name="memEmail" id="memEmail" th:value="${member.memEmail}"><br/>
 모바일 : <input type="text" name="=memMobile" id="memMobile" th:value="${member.memMobile}">
 
@@ -44,6 +45,7 @@
         const data = {"memKey" : document.getElementById("memKey").value,
                       "memId" : document.getElementById("memId").value,
                       "memPw" : document.getElementById("memPw").value,
+                      "memNickname" : document.getElementById("memNickname").value,
                       "memEmail" : document.getElementById("memEmail").value,
                       "memMobile" : document.getElementById("memMobile").value,
                       }

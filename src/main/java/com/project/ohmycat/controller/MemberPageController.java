@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 @RequiredArgsConstructor
 public class MemberPageController {
@@ -28,6 +29,7 @@ public class MemberPageController {
     public String insertMember2() {
         return "Member/Join.html";
     }
+
 
     @RequestMapping("/memberInsert") //회원가입->로그인페이지
     public String insertMember(Member member){

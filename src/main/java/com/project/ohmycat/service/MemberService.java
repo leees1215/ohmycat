@@ -35,6 +35,7 @@ public class MemberService {
 
         member1.setMemId(member.getMemId());
         member1.setMemPw(member.getMemPw());
+        member1.setMemNickname(member.getMemNickname());
         member1.setMemMobile(member.getMemMobile());
         member1.setMemEmail(member.getMemEmail());
         member1.setAdminFlag(member.getAdminFlag());

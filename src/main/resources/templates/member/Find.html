@@ -31,6 +31,7 @@
             <th>번호</th>
             <th>아이디</th>
             <th>비밀번호</th>
+            <th>닉네임</th>
             <th>이메일</th>
             <th>모바일</th>
         </tr>
@@ -39,6 +40,7 @@
             <td><a th:href="@{/memberUpdate/{key}(key=${li.memKey})}">[[${li.memKey}]]</a></td>
             <td>[[${li.memId}]]</td>
             <td>[[${li.memPw}]]</td>
+            <td>[[${li.memNickname}]]</td>
             <td>[[${li.memEmail}]]</td>
             <td>[[${li.memMobile}]]</td>
         </tr>

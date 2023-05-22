@@ -25,6 +25,9 @@ public class Member extends BasicEntity {
     @Column(name = "mem_pw", nullable = false)
     private String memPw;
 
+    @Column(name = "mem_nickname", nullable = false)
+    private String memNickname;
+
     @Column(name = "mem_email", nullable = false)
     private String memEmail;
 

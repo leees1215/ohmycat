@@ -1,5 +1,6 @@
 package com.project.ohmycat.controller;
 
+
 import com.project.ohmycat.dto.InsertBoardDto;
 import com.project.ohmycat.dto.UpdateBoardDto;
 import com.project.ohmycat.entity.Board;
