@@ -43,14 +43,14 @@ public class MemberController {
     }
 
     @GetMapping("/nickname/duplicate")
-    public Long JoinNickNameCheck(String nickname){
-        System.out.println();
-        return memberService.JoinNickNameCheck(nickname);
+    public Long JoinNickNameCheck(String memNickname){
+        System.out.println(memNickname);
+        return memberService.JoinNickNameCheck(memNickname);
     }
 
     @GetMapping("/id/duplicate")
     public Long JoinIdCheck(String memId){
-        System.out.println(memId);
+        //System.out.println(memId);
         return memberService.JoinIdCheck(memId);
     }
 
