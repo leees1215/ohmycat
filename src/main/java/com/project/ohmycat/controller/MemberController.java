@@ -5,6 +5,7 @@ import com.project.ohmycat.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.List;
 
 @RestController
@@ -27,9 +28,8 @@ public class MemberController {
     @PostMapping
     public void insertMember(@RequestBody Member member) {
         memberService.insertMember(member);
-
-
     }
+
 
     @PutMapping
     public void updateMember(@RequestBody Member member) {
@@ -41,6 +41,19 @@ public class MemberController {
     public void deleteMember(@PathVariable("id") Integer id) {
         memberService.deleteMember(id);
     }
+
+    @GetMapping("/nickname/duplicate")
+    public Long JoinNickNameCheck(String nickname){
+        System.out.println();
+        return memberService.JoinNickNameCheck(nickname);
+    }
+
+    @GetMapping("/id/duplicate")
+    public Long JoinIdCheck(String memId){
+        System.out.println(memId);
+        return memberService.JoinIdCheck(memId);
+    }
+
 
 
 }

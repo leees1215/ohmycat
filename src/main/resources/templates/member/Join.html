@@ -23,9 +23,9 @@
 </div>
 <div class="container text-center">
 <br>
-아이디 : <input name="memId" id="memId" required><br/>
+아이디 : <input name="memId" id="memId" required><button type="button" onclick="duplicateId()"> 중복확인</button><br/>
 패스워드 : <input name="memPw" id="memPw" required><br/>
-닉네임 : <input name="memNickname" id="memNickname" required><br/>
+닉네임 : <input name="memNickname" id="memNickname" required><button type="button" onclick="duplicateId()"> 중복확인</button><br/>
 이메일 : <input name="memEmail" id="memEmail" required><br/>
 모바일 : <input name="memMobile" id="memMobile" required><br/>
 
@@ -44,6 +44,7 @@
 
         const data = {"memId" : document.getElementById("memId").value,
                       "memPw" : document.getElementById("memPw").value,
+                      "memNickname" : document.getElementById("memNickname").value,
                       "memEmail" : document.getElementById("memEmail").value,
                       "memMobile" : document.getElementById("memMobile").value,
                       }
@@ -62,4 +63,25 @@
 
         })
     }
+
+    function duplicateId() {
+        let memId = document.getElementById("memId").value;
+
+        $.ajax({
+            type: 'GET'
+            , url : '/member/id/duplicate?memId=' + memId
+            , dataType: 'json'
+            , contentType: 'application/json'
+            , complete: function(result){
+                console.log(result)
+                if (result.responseText == 0) {
+                    alert("사용가능한 아이디입니다")
+                } else if(result.responseText != 0){
+                    alert("중복된 아이디입니다")
+                }
+            }
+
+        })
+    }
+
 </script>

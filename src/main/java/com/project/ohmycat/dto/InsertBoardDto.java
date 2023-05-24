@@ -10,4 +10,5 @@ public class InsertBoardDto {
     private Integer boardKey;
     private String boardTitle;
     private String boardContent;
+
 }

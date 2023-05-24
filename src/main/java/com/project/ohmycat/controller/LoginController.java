@@ -35,8 +35,7 @@ public class LoginController {
 
     }
 
-//    public String Manager(){
-//
-//    }
+
+
 
 }

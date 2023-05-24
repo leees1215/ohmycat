@@ -31,7 +31,7 @@ public class MemberService {
 
     public void updateMember(Member member) {
 
-        Member member1  = memberRepository.findById(member.getMemKey()).orElseThrow(() -> new RuntimeException());
+        Member member1 = memberRepository.findById(member.getMemKey()).orElseThrow(() -> new RuntimeException());
 
         member1.setMemId(member.getMemId());
         member1.setMemPw(member.getMemPw());
@@ -49,7 +49,7 @@ public class MemberService {
         memberRepository.deleteById(memberKey);
     }
 
-    public Member login(MemberDto memberDto){
+    public Member login(MemberDto memberDto) {
 
         try {
             // 로직
@@ -67,5 +67,13 @@ public class MemberService {
 
     }
 
+    public long JoinNickNameCheck(String countByMemNickname)// 닉네임 중복체크
+    {
+        return memberRepository.countByMemNickname(countByMemNickname);
+    }
+
+    public long JoinIdCheck(String countByMemId) { // 아이디 중복체크
+        return memberRepository.countByMemId(countByMemId);
+    }
 
 }

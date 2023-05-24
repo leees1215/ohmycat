@@ -21,7 +21,6 @@ public class MemberPageController {
 
     @RequestMapping("/loginPage") //로그인페이지
     public String insertMember(){
-
         return "Member/Login.html";
     }
 
@@ -50,6 +49,8 @@ public class MemberPageController {
         model.addAttribute("member", memberService.selectMemberById(key));
         return "member/FindtoUpdate.html";
     }
+
+
 
 
 
