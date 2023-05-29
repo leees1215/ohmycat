@@ -20,4 +20,5 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 
     @Query("SELECT COUNT(m) FROM Member m WHERE m.memId = :memId")
     Long countByMemId(String memId);
+
 }
