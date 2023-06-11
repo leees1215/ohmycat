@@ -39,6 +39,16 @@
         <br>
 
 
+
+
+        <br>
+        <button type="button" onclick="like()" class="btn btn-outline-info" >좋아요</button><br/>
+        <br>
+
+
+
+
+    
         <br>댓글--</br>
         <form action="/comment/commentRegister" method="post">
             <input type="number" hidden name="boardKey" th:value="${board.boardKey}">
@@ -62,3 +72,35 @@
 </div>
 </body>
 </html>
+<!-- ajax-->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    function like() {
+
+        const data = {
+                        "like" : document.getElementById("like").value,
+                      }
+
+
+
+
+        $.ajax({
+            type: 'GET'
+            , url : '/like_brd'
+            , dataType: 'json'
+            , data : JSON.stringify(data)
+            , contentType: "application/json"
+            , success: function(result) {
+            }
+
+        })
+           alert("좋아요");
+                location.href='/Like/board/like';
+    }
+
+</script>
+
+

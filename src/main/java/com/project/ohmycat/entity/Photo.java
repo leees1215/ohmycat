@@ -12,15 +12,15 @@ public class Photo extends BasicEntity{
     @Id
     @Column(name = "photo_key", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer PhotoKey;
+    private Integer photoKey;
 
     @Column(name = "photo_route", nullable = false)
-    private String PhotoRoute;
+    private String photoRoute;
 
     @Column(name = "photo_name", nullable = false)
-    private String PhotoName;
+    private String photoName;
 
     @Column(name = "photo_type", nullable = false)
-    private String PhotoType;
+    private String photoType;
 
 }

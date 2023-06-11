@@ -1,5 +1,6 @@
 //package com.project.ohmycat.controller;
 //
+//import com.project.ohmycat.dto.PhotoDto;
 //import com.project.ohmycat.entity.Photo;
 //import com.project.ohmycat.service.PhotoService;
 //import lombok.RequiredArgsConstructor;
@@ -15,17 +16,18 @@
 //
 //    @GetMapping("/{id}")
 //    public Photo selectPhoto (@PathVariable("id") Integer id) {
-//        return photoService.selectPhotoById(id);
+//        return photoService.selectPhoto(id);
 //    }
 //
 //    @PutMapping
 //    public void insertPhoto(@RequestBody PhotoDto dto){
+//        photoService.insertPhoto(dto);
 //
 //    }
 //
 //    @PutMapping
-//    public void updatePhoto(@RequestBody Photo photo) {
-//        photoService.updatePhoto(photo);
+//    public void updatePhoto(@RequestBody PhotoDto dto) {
+//        photoService.updatePhoto(dto);
 //    }
 //
 //    @DeleteMapping("/{id}")

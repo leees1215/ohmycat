@@ -1,19 +1,35 @@
 package com.project.ohmycat.entity;
 
+import lombok.Builder;
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "like")
-public class Like extends BasicEntity{
+@Table(name = "like_brd")
+public class Like {
 
     @Id
     @Column(name = "like_key", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer LikeKey;
+    private Integer likeKey;
 
     @Column(name = "like_brd_key", nullable = false)
-    private Integer LikeBrdKey;
+    private Integer likeBrdKey;
 
     @Column(name = "like_by", nullable = false)
-    private Integer LikeBy;
+    private Integer likeBy;
+
+    @CreatedDate
+    @Column(updatable = false)
+    @org.hibernate.annotations.Comment("데이터 생성 시간")
+    private LocalDateTime createTime;
+
+    @Builder
+    public Like(Integer likeBrdKey, Integer likeBy) {
+        this.likeBrdKey = likeBrdKey;
+        this.likeBy = likeBy;
+    }
 }

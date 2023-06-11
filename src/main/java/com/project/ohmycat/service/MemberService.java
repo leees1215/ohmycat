@@ -76,4 +76,6 @@ public class MemberService {
         return memberRepository.countByMemId(countByMemId);
     }
 
+
+
 }

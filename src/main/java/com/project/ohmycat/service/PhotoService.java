@@ -12,21 +12,21 @@
 //
 //    private final PhotoRepository photoRepository;
 //
-//    public Photo selectLike(Integer id) {
+//    public Photo selectPhoto(Integer id) {
 //        return photoRepository.findById(id).orElseThrow(() -> new RuntimeException());
 //    }
 //
 //    public void insertPhoto(PhotoDto dto) {
 //
-//        photoRepository.save(photo);
+//        photoRepository.save(dto.);
 //    }
 //
-//    public void updatePhoto(PhotoDto dto) { // UpdateBoardDto 수정 것
+//    public void updatePhoto(PhotoDto dto) {
 //
-//        photoRepository.save(photo);
+//        photoRepository.save(dto.);
 //    }
 //
-//    public void deletePhoto(Integer PhotoKey) {
+//    public void deletePhoto(Integer photoKey) {
 //        photoRepository.deleteById(photoKey);
 //    }
 //}
