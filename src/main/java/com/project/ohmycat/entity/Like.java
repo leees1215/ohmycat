@@ -1,6 +1,7 @@
 package com.project.ohmycat.entity;
 
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "like_brd")
+@NoArgsConstructor
 public class Like {
 
     @Id
@@ -31,5 +33,6 @@ public class Like {
     public Like(Integer likeBrdKey, Integer likeBy) {
         this.likeBrdKey = likeBrdKey;
         this.likeBy = likeBy;
+        this.createTime = LocalDateTime.now();
     }
 }

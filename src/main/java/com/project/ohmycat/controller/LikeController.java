@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "Like")
+@RequestMapping(value = "/like")
 
 
 public class LikeController {
@@ -29,15 +29,18 @@ public class LikeController {
     }
 
     @GetMapping("/board/like")
-    public Integer like(Integer likeBrdKey,Integer likeBy, HttpSession session){
+    public Integer like(Integer likeBrdKey, HttpSession session){
         Object memKey = session.getAttribute("memKey");
 
+        System.out.println("API 호출");
         if(memKey != null){
-            return -1;
-        } else if(memKey != null){
+            likeService.countByLikeBrdKey(likeBrdKey, (Integer) memKey);
             return 0;
+        } else{
+            return -1;
             //System.out.println(session.getAttribute("memKey"));
         }
-    return 0;
+
     }
+
 }

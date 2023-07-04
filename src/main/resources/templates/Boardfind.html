@@ -42,13 +42,12 @@
 
 
         <br>
-        <button type="button" onclick="like()" class="btn btn-outline-info" >좋아요</button><br/>
+        <button type="button" onclick="like()" class="feed-icon-btn">🤍</button>
         <br>
 
 
 
 
-    
         <br>댓글--</br>
         <form action="/comment/commentRegister" method="post">
             <input type="number" hidden name="boardKey" th:value="${board.boardKey}">
@@ -57,12 +56,13 @@
         </form>
         <br>
 
+
         <tr th:each="li : ${comment}">
             <td>[[${li.createBy}]]</td>
             <td>[[${li.comContent}]]</td>
             <td>[[${li.createTime}]]</td>
             <form action="/comment/commentDelete" method="post">
-                <input type="number" hidden name="boardKey" th:value="${board.boardKey}">
+                <input type="number" id="likeBrdKey" hidden name="boardKey" th:value="${board.boardKey}">
                 <input type="number" hidden name="comKey" th:value="${li.comKey}">
                 <button type="submit">삭제하기</button>
             </form>
@@ -79,9 +79,9 @@
 <script>
 
     function like() {
-
+        console.log("LIKE");
         const data = {
-                        "like" : document.getElementById("like").value,
+                        "likeBrdKey" : document.getElementById("likeBrdKey").value,
                       }
 
 
@@ -89,17 +89,16 @@
 
         $.ajax({
             type: 'GET'
-            , url : '/like_brd'
+            , url : '/like/board/like?likeBrdKey=' + encodeURI(document.getElementById("likeBrdKey").value)
             , dataType: 'json'
-            , data : JSON.stringify(data)
             , contentType: "application/json"
             , success: function(result) {
             }
 
         })
            alert("좋아요");
-                location.href='/Like/board/like';
     }
+
 
 </script>
 

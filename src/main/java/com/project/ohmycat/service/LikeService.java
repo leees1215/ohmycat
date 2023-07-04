@@ -2,12 +2,13 @@ package com.project.ohmycat.service;
 
 import com.project.ohmycat.dto.LikeDto;
 import com.project.ohmycat.entity.Board;
-import com.project.ohmycat.entity.Comment;
 import com.project.ohmycat.entity.Like;
 import com.project.ohmycat.repository.BoardRepository;
 import com.project.ohmycat.repository.LikeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,19 +32,20 @@ public class LikeService {
         likeRepository.deleteById(likeKey);
     }
 
+
+    @Transactional
     public Integer countByLikeBrdKey(Integer likeBrdKey, Integer likeBy) {
-
-
-        if(likeRepository.countByLikeBrdKeyAndLikeBy(likeBrdKey,likeBy) > 0){
-            likeRepository.deleteById(countByLikeBrdKey(likeBrdKey, likeBy));//없애는 로직
-            System.out.println(countByLikeBrdKey(likeBrdKey,likeBy));
-        }else if (likeRepository.countByLikeBrdKeyAndLikeBy(likeBrdKey,likeBy)==0){
-            likeRepository.countByLikeBrdKeyAndLikeBy(1);
-
-            // 추가
-            //넣는 로직
+        if (likeRepository.countByLikeBrdKeyAndLikeBy(likeBrdKey, likeBy) > 0) {
+            likeRepository.deleteByLikeBrdKeyAndLikeBy(likeBrdKey,likeBy);
+        } else {
+            Like like2 = Like.builder()
+                    .likeBy(likeBy)
+                    .likeBrdKey(likeBrdKey)
+                    .build();
+            likeRepository.save(like2);
         }
         return 0;
     }
 }
+
 
