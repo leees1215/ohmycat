@@ -32,12 +32,17 @@ public class Board extends BasicEntity {
     @Column(name = "board_view", nullable = false)
     private Integer boardView = 0;
 
+    @Column(name = "board_file_path", nullable = true)
+    private String boardFilePath;
+
+
     @Builder
     public Board(InsertBoardDto dto, Integer boardBy, Integer boardKey) {
         this.boardTitle = dto.getBoardTitle();
         this.boardContent = dto.getBoardContent();
         this.boardBy = boardBy;
         this.boardKey = dto.getBoardKey();
+        this.boardFilePath = dto.getBoardFilePath();
     }
 
     public void updateBoard(Integer boardKey, String boardTitle, String boardContent) {

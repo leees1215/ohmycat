@@ -6,6 +6,8 @@
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.web.bind.annotation.*;
 //
+//import java.nio.file.Path;
+//
 //@RestController
 //@RequiredArgsConstructor
 //@RequestMapping(value = "Photo")
@@ -14,26 +16,18 @@
 //    private final PhotoService photoService;
 //
 //
-//    @GetMapping("/{id}")
-//    public Photo selectPhoto (@PathVariable("id") Integer id) {
-//        return photoService.selectPhoto(id);
-//    }
+//    @PostMapping("/boardUpdate/{id}")
+//    public String PhotoUpdate(PathVariable("id") Integer id,)
 //
-//    @PutMapping
-//    public void insertPhoto(@RequestBody PhotoDto dto){
-//        photoService.insertPhoto(dto);
-//
-//    }
-//
-//    @PutMapping
-//    public void updatePhoto(@RequestBody PhotoDto dto) {
-//        photoService.updatePhoto(dto);
-//    }
+
 //
 //    @DeleteMapping("/{id}")
-//    public void deleteMember(@PathVariable("id") Integer id) {
+//    public void deletePhoto(@PathVariable("id") Integer id) {
 //        photoService.deletePhoto(id);
 //    }
+//
+//
+//
 //
 //
 //

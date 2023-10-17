@@ -24,6 +24,8 @@ public class Like {
     @Column(name = "like_by", nullable = false)
     private Integer likeBy;
 
+
+
     @CreatedDate
     @Column(updatable = false)
     @org.hibernate.annotations.Comment("데이터 생성 시간")

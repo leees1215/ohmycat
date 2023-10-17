@@ -18,6 +18,7 @@ public class LikeController {
     private final LikeService likeService;
 
 
+
     @PutMapping
     public void insertLike(@RequestBody LikeDto dto){
         likeService.insertLike(dto);
@@ -31,11 +32,8 @@ public class LikeController {
     @GetMapping("/board/like")
     public Integer like(Integer likeBrdKey, HttpSession session){
         Object memKey = session.getAttribute("memKey");
-
-        System.out.println("API 호출");
         if(memKey != null){
-            likeService.countByLikeBrdKey(likeBrdKey, (Integer) memKey);
-            return 0;
+            return likeService.countByLikeBrdKey(likeBrdKey, (Integer) memKey);
         } else{
             return -1;
             //System.out.println(session.getAttribute("memKey"));

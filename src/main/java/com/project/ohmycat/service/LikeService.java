@@ -44,7 +44,9 @@ public class LikeService {
                     .build();
             likeRepository.save(like2);
         }
-        return 0;
+        System.out.println(likeRepository.countByLikeBrdKey(likeBrdKey));
+
+        return likeRepository.countByLikeBrdKey(likeBrdKey);
     }
 }
 

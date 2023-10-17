@@ -1,6 +1,7 @@
 package com.project.ohmycat.controller;
 
 
+import com.project.ohmycat.config.FileUtils;
 import com.project.ohmycat.dto.InsertBoardDto;
 import com.project.ohmycat.dto.UpdateBoardDto;
 import com.project.ohmycat.entity.Board;
@@ -11,7 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,6 +25,7 @@ public class BoardpageController {
 
     private final BoardService boardService;
     private final CommentService commentService;
+    private final FileUtils fileUtils;
 
 
     @RequestMapping("/boardPage")
@@ -34,7 +38,7 @@ public class BoardpageController {
 
     @RequestMapping("/boardSelect/{id}")
     public String selectBoard(Model model, @PathVariable("id") Integer key,
-                                            @PathVariable("id") Integer view, HttpSession session) {
+                              @PathVariable("id") Integer view, HttpSession session) {
         Board board = boardService.selectBoardById(key);
         List<Comment> commentList = commentService.findAllComment(key);
 
@@ -50,7 +54,7 @@ public class BoardpageController {
         if (memKey == null) {
             return "Member/Login.html";
         }
-        if(adminFlag != null){ // 관리자가 아니면? 사용자화면
+        if (adminFlag != null) { // 관리자가 아니면? 사용자화면
             if (adminFlag != 1) {
                 System.out.println("관리자가 아닙니다");
             } else {
@@ -79,26 +83,28 @@ public class BoardpageController {
     }
 
     @RequestMapping("/boardRegister")//게시글 작성 페이지로 이동
-    public String registerBoard(InsertBoardDto dto){
+    public String registerBoard(InsertBoardDto dto) {
 
         return "BoardRegister.html";
 
     }
 
-    @RequestMapping("/boardRegister2") // 게시글 작성 페이지에서 로그인유무 확인 후 게시글 작성
-    public String registerBoard2(InsertBoardDto dto, HttpSession session){
+    @PostMapping("/boardRegister2") // 게시글 작성 페이지에서 로그인유무 확인 후 게시글 작성
+    public String registerBoard2(InsertBoardDto dto, MultipartHttpServletRequest multipartHttpServletRequest, HttpSession session) throws Exception {
         Integer memKey = (Integer) session.getAttribute("memKey");
         if (memKey == null) {
             return "Member/Login.html";
         }
+        String filePathName = fileUtils.parseFileInfo(multipartHttpServletRequest);
+        dto.setBoardFilePath(filePathName);
         boardService.insertBoard(dto, memKey);
         return "redirect:/boardPage";
 
     }
 
+
     @RequestMapping("/boardDelete/{id}")
     public String deleteBoard(@PathVariable("id") Integer boardKey) {
-//        System.out.println(boardKey);
         boardService.deleteBoard(boardKey);
         return "redirect:/boardPage";
     }

@@ -17,5 +17,7 @@ public interface LikeRepository extends JpaRepository<Like, Integer> {
     @Modifying
     void deleteByLikeBrdKeyAndLikeBy(Integer likeBrdKey, Integer likeBy);
 
+    Integer countByLikeBrdKey(Integer likeBrdKey);
+
 
 }
