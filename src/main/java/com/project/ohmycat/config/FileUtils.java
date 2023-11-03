@@ -10,6 +10,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class FileUtils {
@@ -21,7 +22,7 @@ public class FileUtils {
 
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
         ZonedDateTime current = ZonedDateTime.now();
-        String path = "D:\\images\\" + current.format(format);
+        String path = "D:\\images";
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
@@ -49,13 +50,13 @@ public class FileUtils {
                             break;
                         }
                     }
-                    newFileName = multipartFile.getName() + originalFileExtension;
+                    newFileName = Objects.requireNonNull(multipartFile.getOriginalFilename()).split("\\.")[0] + originalFileExtension;
 
                     file = new File(path + File.separator + newFileName);
                     multipartFile.transferTo(file);
                 }
             }
         }
-        return path + "/" + newFileName;
+        return "/images/" + newFileName;
     }
 }

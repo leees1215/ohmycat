@@ -19,7 +19,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/mainPage" class="nav-link active" aria-current="page">OhmyCat</a></li>
             <li class="nav-item"><a href="/boardPage" class="nav-link">게시판</a></li>
-            <li class="nav-item"><a href="/memberFind" class="nav-link">멤버전체조회</a></li>
+            <li class="nav-item"><a th:if="${session.admin == 1}" href="/memberFind" class="nav-link">멤버전체조회</a></li>
             <li class="nav-item"><a th:if="${session.memKey == null}" href="/loginPage" class="nav-link">Login</a></li>
             <li class="nav-item"><a th:if="${session.memKey == null}" href="/joinPage" class="nav-link">Join</a></li>
             <li class="nav-item"><a th:if="${session.memKey != null}" href="/logout" class="nav-link">Logout</a></li>
@@ -36,7 +36,7 @@
 
         <div>제목 : [[${board.boardTitle}]]</div>
         <div>내용 : [[${board.boardContent}]]</div>
-        <div><img id="imgId" th:src="@{${board.boardFilePath}}" alt="첨부이미지" th:if="${board.boardFilePath != null}" /></div>
+        <div><img id="imgId" th:src="@{${board.boardFilePath}}" alt="첨부이미지" th:if="${board.boardFilePath != null}" style=""/></div>
     <br>
     <br>
     <br>

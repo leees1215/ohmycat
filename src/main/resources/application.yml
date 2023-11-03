@@ -13,6 +13,5 @@ spring:
     multipart:
       maxFileSize: 50MB
       maxRequestSize: 50MB
-
 server:
   port: 8082

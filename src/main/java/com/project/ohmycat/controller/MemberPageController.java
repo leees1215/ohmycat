@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class MemberPageController {
 
 
     @RequestMapping("/loginPage") //로그인페이지
-    public String insertMember(){
+    public String insertMember() {
         return "Member/Login.html";
     }
 
@@ -31,16 +33,29 @@ public class MemberPageController {
 
 
     @RequestMapping("/memberInsert") //회원가입->로그인페이지
-    public String insertMember(Member member){
+    public String insertMember(Member member) {
         memberService.insertMember(member);
         return "redirect:/loginPage";
     }
 
-    @RequestMapping("/memberFind") // 멤버 전체조회
-    public String findMember(Model model){
-        model.addAttribute("list",memberService.findAllMember());
-        return "member/Find.html";
+    @RequestMapping("/memberFind") // 멤버 전체조회 + **관리자만 접근 할 수 있게 하기
+    public String findMember(Model model, MemberDto memberDto, HttpSession session) {
+        model.addAttribute("list", memberService.findAllMember());
+
+        Object memKey = session.getAttribute("memKey");
+        Integer adminFlag = (Integer) session.getAttribute("admin");
+
+        if (adminFlag != null) { // 관리자가 아니면?
+            if (adminFlag != 1) {
+//                System.out.println("관리자가 아닙니다");
+                return "redirect:/mainPage";
+            } else {
+                return "Member/Find.html";
+            }
+        }
+        return "redirect:/mainPage";
     }
+
 
     @RequestMapping("/memberUpdate/{id}") // 멤버 수정하는 페이지
     public String updateMember(Model model, @PathVariable("id") Integer key){
@@ -49,11 +64,6 @@ public class MemberPageController {
         model.addAttribute("member", memberService.selectMemberById(key));
         return "member/FindtoUpdate.html";
     }
-
-
-
-
-
 
 
 }
